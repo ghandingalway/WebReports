@@ -7,6 +7,7 @@ $(function(){
             method:"POST",
             data:{sql:$("#sql-text")[0].value},
             success:function(result){
+                tableGenerator($("#result-grid"), result);
                 barGraphGenerator($("#graph-box"), result);
                 $("#result-box").html(JSON.stringify(result))
             }
