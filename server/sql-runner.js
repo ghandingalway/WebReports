@@ -22,28 +22,33 @@ sql.on('error', function(err) {
 runQuery= function(query, onsuccess){
     console.log("RUNNING "+query);
     sql.connect(config, function(connerr) {
-        // ... error checks
+        //callback that is run when a connection has been successfully made to the DB
 
         console.log("CONNECTING...");
         if (connerr){
+            //if there is an error in the connection, log the error to the console and quit
             console.log(connerr)
         }
         // Query
 
         var request = new sql.Request(); // or: var request = connection.request();
         request.query(query, function(err, recordset) {
+            //callback that is run when results come back from a query
             console.log("QUERYING...");
             // ... error checks
             if (err){
+                //if there is an error in the request. log the error to the console and quit
                 console.log(err)
+                return;
             }
 
             console.log(recordset);
             onsuccess(recordset)
         });
     });
-
-    console.log("RUN...");
 };
 
+//the exports object is a special object that is returned by a 'require' call for this module.
+//Therefore any functions that we want to call from outside need to go on the exports object.
+//Here we add 'runQuery' to exports, so the web server module can call it to run SQL queries when requested to.
 exports.runQuery = runQuery;
