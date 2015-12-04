@@ -5,9 +5,12 @@
     <title></title>
     <script src="http://underscorejs.org/underscore.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.src.js"></script>
+    <script src="data-table.js"></script>
     <script src="bar-graph.js"></script>
     <script src="report-runner.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
 </head>
 <body>
 <label> SQL Query:
@@ -19,6 +22,7 @@
 </label>
 <input type="button" id="sql-send" value="RUN"/>
 <div id="graph-box"></div>
+<table id="result-grid" class="display" width="100%"></table>
 <div id="result-box" style="display: none"></div>
 </body>
 </html>

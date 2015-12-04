@@ -14,7 +14,7 @@ var barGraphGenerator = (function(){
             }
             element.highcharts({
                 chart: {
-                    type: 'line'
+                    type: 'column'
                 },
                 title: {
                     text: 'Graph',
