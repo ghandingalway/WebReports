@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="http://code.highcharts.com/highcharts.src.js"></script>
+    <script src="bar-graph.js"></script>
+    <script src="report-runner.js"></script>
+</head>
+<body>
+<label> SQL Query:
+    <textarea style="width: 800px" id="sql-text">
+        SELECT DateName( month , DateAdd( month , DATEPART(month, StartDate) , -1 )) AS category, SUM(CASE WHEN EndDate<=DueDate THEN 1 ELSE 0 END) AS val1, SUM(CASE WHEN EndDate>DueDate THEN 1 ELSE 0 END) AS val0
+        FROM Production.WorkOrder
+        GROUP BY DATEPART(month, StartDate) ORDER BY DATEPART(month, StartDate)
+    </textarea>
+</label>
+<input type="button" id="sql-send" value="RUN"/>
+<div id="graph-box"></div>
+<div id="result-box" style="display: none"></div>
+</body>
+</html>
